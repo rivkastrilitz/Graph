@@ -1,0 +1,139 @@
+this project contains 3 classes implements the interfaces .node_data ,graph,graph_algorithms
+in this readMy text, we will go trow every function in those classes and detail each one of them
+
+the first one is NodeData class 
+/////////////////////////////////
+  NodeData class contains object properties  for the vertex in the graph all vertex have a 
+* unique key - a number who represent the node
+*info and tag are also extra information that the nodes contain which  we will use in the graph algorithms class
+* nodes can have a neighbor 
+a vertex that is connected to it with an edge therefore the class contains a hashmap collection that holds each node neighbors.
+
+the class have two constructors: 
+the first one is a defaulting one that does not receive any information from the user 
+NodeData()
+the second one receives a key and returns the node related to this key.
+NodeData(int key)
+
+because the key ,info and the tag are private variables, there are setters and getters for them in the class (except for setter to the key because every node created with a key that we don't want to change )
+getKey(),getInfo(),setInfo(String s),getTag(),setTag(int t).
+
+getNi()
+this function approach to the hash map and pulls the neighbor collection.
+
+hasNi(int key)
+this function returns true if a given node has a neighbor, and false otherwise.
+
+addNi(node_data t)
+this function adds a node to the neighbor collection.
+
+removeNode(node_data node)
+this function allows us to remove a node from the neighbor collection.
+
+ the second one is Graph_DS
+/////////////////////////////////
+in this class, there is an implementation of a graph using a hashMap.
+the class variables are
+*node counter -this counter counts the number of nodes that have been added to the graph.
+*edge Counter-this counter counts the number of edges that have been added to the graph.
+*mode Counter-counts the number of changes accrued on the graph.
+every addition of a new node or edge is counted.
+
+getNode(int key)
+this method receives a key and returns a vertex from the graph that is related to this node.
+hasEdge(int node1, int node2)
+this method receives two keys, then goes to the graph and checks if the nodes that hold these keys are connected with an edge.
+if they do it returns true.
+
+addNode(node_data n)
+adds a given node to the graph.
+it also raized the node counter and the mode counter by one.
+
+connect(int key1, int key2) 
+this method connects two nodes with an imaginary edge.
+it practically makes each node neighbor collection to contain the other node. 
+and of course, raise the edge Counter and the mode Counter by one.
+getV()
+returns a pointer to all the vertex in the graph.
+
+ getV(int node_id)
+returns a pointer to all the neighbors connected to a given vertex in the graph.
+
+removeNode(int key)
+this method removes a vertex from the graph.
+when removing a vertex the function removes all the edges that are connected to that vertex.
+and also remove the vertex itself from the neighbor collections that he exists in.
+node counter is decreased by one. 
+the edge counter ant the mode counter increased by one for every edge that has been removed.
+
+removeEdge(int node1, int node2)
+this method allows us to remove an edge from the graph.
+
+nodeSize()
+return the number of nodes in the graph
+
+edgeSize() 
+ return the number of edges in the graph.
+
+getMC()
+return the number of changes made on the graph.
+
+
+the third one is graph algorithms:
+/////////////////////////////////////
+in this class, more methods can be computed on the graph.
+
+init(graph g)
+this method allows us to initialize the graph by using a pointer to it.
+
+copy()
+this method allows us to coy the graph.
+it goes trow all the nodes in the original graph and creates new nodes with the same key for the copied graph.  then connect all the nodes in the new graph according to the original graph. 
+isConnected()
+this function returns true if all the nodes in the graph are connected
+with an edge.
+after using the BFS** method the function goes trow all the vertex in the graph and checks their tag.
+if there is at least one vertex that his tag hasn't been changed it means that this vertex hasn't been visited.
+which means that the graph isn't a linked graph. 
+** the BFS method receives a start point on the graph from the user.
+it passing to the next vertex only by using the edges that are connected to the current vertex. and like that, it travels all the nodes that are connected in the graph and marking each one of them (by changing the vertex tag ).   
+
+shortestPathDist(int src, int dest)
+this method returns the shortest path between two given nodes 
+ it calls the 
+shortestPath(int src, int dest) and returns it list size. 
+
+shortestPath(int src, int dest)
+this function returns a list of the shortest path between two given nodes using the BFS2 function.
+the BFS2 is similar to the BFS except for a few changes.
+the bfs2 marking the vertex that has been visited, and saving in each vertex info the vertex father- the key of the previous vertex.
+after visiting the destination vertex there is no need to continue and traveling the graph so it moves forward to creating the path list.
+the path creation starts from the destination vertex to the source vertex. by using the information that has been saved in the info.
+the dest vertex is the first one to add into the path and the next is its father and then the father of the father exc... until we arrive at the source vertex.
+after finishing the path creation the function revers the path and return it.
+ 
+initializeNode (graph g)
+the function initializes every node's tag and info 
+in the graph 
+we will use this method before any use in bfs or bfs2 functions.
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
